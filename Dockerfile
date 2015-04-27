@@ -1,6 +1,17 @@
 FROM java:openjdk-7u65-jdk
 
-RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    curl \
+    zip \
+    python27 \
+    python-pip \
+    git \
+    docker \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install awscli
 
 ENV JENKINS_HOME /var/jenkins_home
 
@@ -30,11 +41,14 @@ RUN curl -L http://mirrors.jenkins-ci.org/war-stable/$JENKINS_VERSION/jenkins.wa
 ENV JENKINS_UC https://updates.jenkins-ci.org
 RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref
 
-# for main web interface:
+# for main web interface
 EXPOSE 8080
 
 # will be used by attached slave agents:
 EXPOSE 50000
+
+# for ssh into this docker container
+EXPOSE 22
 
 USER jenkins
 
