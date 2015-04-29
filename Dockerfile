@@ -16,8 +16,9 @@ RUN apt-get update && apt-get install -y \
     git \
     docker \
     supervisor \
-    && rm -rf /var/lib/apt/lists/* \
-    && pip install awscli ansible
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install awscli ansible
 
 ## SSH 
 
