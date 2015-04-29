@@ -1,4 +1,4 @@
-# Official Jenkins Docker image
+# Jenkins Docker image with added AWS and ansible software
 
 The Jenkins Continuous Integration and Delivery server.
 
