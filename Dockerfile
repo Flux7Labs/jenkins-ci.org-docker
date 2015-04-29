@@ -1,9 +1,9 @@
 FROM java:openjdk-7u65-jdk
 
 ## ENV attributes for proxy. These HAVE to get overwritten when you run the container
-ENV no_proxy localhost,127.0.0.0/8
-ENV http_proxy http://10.0.5.150:8080
-ENV https_proxy http://10.0.5.150:8080
+#ENV no_proxy localhost,127.0.0.0/8
+#ENV http_proxy http://10.0.5.150:8080
+#ENV https_proxy http://10.0.5.150:8080
 
 RUN apt-get update && apt-get install -y \
     wget \
