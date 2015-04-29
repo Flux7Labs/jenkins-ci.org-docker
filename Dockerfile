@@ -5,10 +5,11 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     zip \
-    python27 \
+    python2.7 \
     python-pip \
     git \
     docker \
+    supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install awscli
@@ -63,10 +64,11 @@ EXPOSE 50000
 # for ssh into this docker container
 EXPOSE 22
 
-USER jenkins
+ENTRYPOINT ["/usr/bin/supervisord"]
 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
 COPY jenkins.sh /usr/local/bin/jenkins.sh
-ENTRYPOINT ["/usr/local/bin/jenkins.sh"]
 
 # from a derived Dockerfile, can use `RUN plugin.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
+
