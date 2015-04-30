@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install awscli ansible
+RUN pip install awscli ansible boto
 
 ## SSH 
 
