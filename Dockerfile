@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install awscli ansible cfn-pyplates
+RUN pip install awscli ansible boto cfn-pyplates
 
 ## SSH 
 
