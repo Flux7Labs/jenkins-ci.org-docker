@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install awscli ansible boto cfn-pyplates
 
+## Run the fix for boto's bug "data must be a byte string"
+RUN apt-get remove -y python-openssl
+
 ## SSH 
 
 RUN apt-get update && apt-get install -y openssh-server
