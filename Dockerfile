@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     git \
     docker \
     supervisor \
+    mysql \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install awscli ansible boto cfn-pyplates
